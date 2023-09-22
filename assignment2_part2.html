@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment2 Part 2</title>
+  </head>
+  <body>
+    <script>
+      //   **11. Missing Number**
+      // Given an array containing n distinct numbers taken from 0 to n, find the missing number.
+      function findMissingNumbers(nums) {
+        var maxNum = Math.max(...nums);
+        var missingNumbers = [];
+
+        for (var i = 1; i <= maxNum; i++) {
+          if (nums.indexOf(i) === -1) {
+            missingNumbers.push(i);
+          }
+        }
+
+        return missingNumbers;
+      }
+
+      var nums = [1, 2, 6, 12];
+      var missing = findMissingNumbers(nums);
+      console.log(`Missing numbers are: ${missing}`);
+
+      // ****************ending finding missing number..****************************
+
+      //   **12. Remove Duplicates from an Array**
+      // Write a function that removes duplicate elements from an array.
+
+      function removedublicte(arr) {
+        const uniqueSet = new Set(arr); // Set method only takes unique value form the array
+        const uniqueArray = [...uniqueSet]; // spread operator converts the Set back to an array
+        return uniqueArray;
+      }
+
+      var arrlist = [2, 5, 8, 8, 9, 2];
+      var uniqueArray = removedublicte(arrlist);
+      console.log(uniqueArray);
+
+      // ****************ending removing dublicates elements..****************************
+
+      //   **13. Calculate the Power**
+      // Implement a function that calculates x^n (x raised to the power of n) without using the `Math.pow()` method.
+
+      function power(x, n) {
+        if (n == 0) {
+          console.log(` the power of 0 is always 1`);
+        }
+        var output = 1;
+
+        for (var i = 1; i <= Math.abs(n); i++) {
+          output = output * x;
+        }
+
+        if (n > 0) {
+          return output;
+        } else {
+          return 1 / output;
+        }
+      }
+
+      var x = 2;
+      var n = 6;
+      var powervalue = power(x, n);
+      console.log(`${x}^${n} = ${powervalue}`);
+      // ****************ending calculating the powers..****************************
+
+      //   **14. Merge Sorted Arrays**
+      // Write a function that merges two sorted arrays into a single sorted array.
+      function mergearrays(array1, array2) {
+        const newarr1 = array1.sort();
+        const newarr2 = array2.sort();
+        const mergedarrays = [...newarr1, ...newarr2];
+        console.log(` merged two sorted arrrys = ${mergedarrays}`);
+      }
+
+      const arr1 = [5, 2, 3, 1];
+      const arr2 = [20, 15, 12, 25];
+      mergearrays(arr1, arr2);
+
+      // ****************ending merging 2 sorted array****************************
+
+      //   **15. Find the Second Largest Number**
+      // Create a function that finds and returns the second-largest number in an array of numbers.
+
+      function secondlargest(arr) {
+        const sortedArr = arr.sort((a, b) => a - b); //it sorts in ascending order..
+        const l = sortedArr.length - 2;
+        return sortedArr[l]; // Get the second element (second largest)
+      }
+
+      const arr = [2, 8, 9, 13, 55, 1, 55, 67, 12];
+      const secondlargenumber = secondlargest(arr);
+      console.log(`The second largest number in arr is ${secondlargenumber}`);
+
+      // ****************ending finding 2nd largest number****************************
+
+      //   **16. Reverse Words in a String**
+      // Write a function that reverses the order of words in a sentence.
+
+      function reverseorder(sentence) {
+        const revwords = [];
+        var words = sentence.split(" ");
+        var l = words.length;
+
+        for (var i = l - 1; i >= 0; i--) {
+          revwords.push(words[i]);
+        }
+
+        // Join the reversed words back into a sentence
+        var finalreverse = revwords.join(" ");
+        return finalreverse;
+      }
+
+      sen = "i am good now";
+      var revord = reverseorder(sen);
+      console.log(revord);
+
+      // ****************ending revers order of words****************************
+
+      //   **17. Validate Email Address**
+      // Implement a function that validates if a given string is a valid email address.
+
+      function validateEmail(email) {
+        // regular expression for email validation
+        const pattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
+        // return true if the email matches the pattern, false otherwise.
+        return pattern.test(email);
+      }
+
+      // Emails to test
+      const emails = ["bhim@gmail.io", "gowin@educative"];
+
+      for (let i = 0; i < emails.length; i++) {
+        if (validateEmail(emails[i])) {
+          console.log(
+            'The email "' + emails[i] + '" is a valid email address.'
+          );
+        } else {
+          console.log(
+            'The email "' + emails[i] + '" is an invalid email address.'
+          );
+        }
+      }
+
+      // ****************ending validation email****************************
+
+      //   **18. Find the Intersection of Two Arrays**
+      // Write a function that finds the intersection (common elements) of two arrays.
+
+      function findIntersection(arr1, arr2) {
+        const intersection = [];
+
+        for (i = 0; i < arr1.length; i++) {
+          for (j = 0; j < arr2.length; j++) {
+            if (arr1[i] === arr2[j]) {
+              intersection.push(arr1[i]);
+              break;
+            }
+          }
+        }
+
+        return intersection;
+      }
+
+      const array1 = [1, 2, 3, 4, 5, 8];
+      const array2 = [4, 5, 6, 7, 8, 12];
+      const result = findIntersection(array1, array2);
+      console.log("Intersection of arrays:", result);
+
+      // ****************ending intersections elements in array****************************
+
+
+
+      // **19. Check for Balanced Brackets*
+      // Implement a function that checks if a string with brackets (e.g., "{[()]}" or "[(){}]") is balanced.
+      function isBalanced(str) {
+        const hashMap = { "(": ")", "{": "}", "[": "]" };
+        const stack = [];
+
+        for (let ch of str) {
+          if (hashMap[ch]) {
+            // ch is an opening bracket
+            stack.push(hashMap[ch]);
+          } else if (stack.length > 0 && stack[stack.length - 1] === ch) {
+            // ch is a closing bracket and top of stack matches
+            stack.pop();
+          } else {
+            // ch is a closing bracket and top of the stack doesn't match
+            console.log("Brackets are not balanced.");
+            return false;
+          }
+        }
+
+        if (stack.length === 0) {
+          console.log("Brackets are balanced.");
+          return true;
+        } else {
+          console.log("Brackets are not balanced.");
+          return false;
+        }
+      }
+
+      var string = "[{(})]";
+      var balanced = isBalanced(string);
+    </script>
+  </body>
+</html>

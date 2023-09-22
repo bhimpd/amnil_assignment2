@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 2 Part 1</title>
+  </head>
+  <body>
+    <script>
+      //         **1. Reverse a String**
+      //    Write a function to reverse a given string without using the built-in `reverse()` method.
+      function reverse(inputString) {
+        var l = inputString.length;
+        var reversedString = "";
+        for (var i = l - 1; i >= 0; i--) {
+          reversedString = reversedString + inputString[i];
+        }
+        return reversedString;
+      }
+
+      var string = "amnil technologies";
+      var reversedString = reverse(string);
+      console.log(`The reverse word of ${string}:`, reversedString);
+
+      //   **************reverse string ended here************************
+
+      //       **2. Factorial Calculation**
+      //    Write a function to calculate the factorial of a given positive integer.
+
+      function calculateFactorial(num) {
+        if (num < 0) {
+          return "No factorial value for negative numbers";
+        }
+        var fact = 1;
+        for (var i = 1; i <= num; i++) {
+          fact *= i;
+        }
+        return fact;
+      }
+
+      var num = 5;
+      var factorial = calculateFactorial(num);
+      console.log(`Factorial value of ${num} =`, factorial);
+
+      //   **************factorial  ended here************************
+
+      //     **3. Palindrome Checker**
+      //    Create a function that checks if a given string is a palindrome (reads the same backward as forward).
+
+      function palindrome(palinstring) {
+        l = palinstring.length;
+        revString = "";
+        for (i = l - 1; i >= 0; i--) {
+          revString = revString + palinstring[i];
+        }
+        return revString;
+        // console.log(revString)
+      }
+      inputString = "nolemonnomelon";
+      var palindromestring = palindrome(inputString);
+      console.log(palindromestring);
+
+      if (inputString === palindromestring) {
+        console.log(` ${inputString} is a palindrome....`);
+      } else {
+        console.log(` ${inputString} is a not palindrome....`);
+      }
+      //   **************palindrome  ended here************************
+
+      //       **4. Find the Longest Word**
+      //    Write a function that finds and returns the longest word in a sentence.
+
+      function findLongestWord(sentence) {
+        // it Splits the sentence into an array of words
+        var words = sentence.split(" ");
+        console.log(words);
+
+        // Initialize variables to keep the longest word and its length
+        var longestWord = "";
+        var maxLength = 0;
+
+        // loop  through the words and find the longest one
+        for (var i = 0; i < words.length; i++) {
+          var word = words[i];
+          if (word.length > maxLength) {
+            maxLength = word.length;
+            longestWord = word;
+          }
+        }
+        return longestWord;
+      }
+
+      var sentence = "hello amnil technology happy to be here";
+      var longest = findLongestWord(sentence);
+      console.log(`The longest word in the sentence is: "${longest}"`);
+
+      //   **************longest word  ended here************************
+
+      //     **5. FizzBuzz**
+      //  Write a program that prints numbers from 1 to 100. For multiples of 3, print "Fizz"; for multiples of 5, print "Buzz"; and for multiples of both 3 and 5, print "FizzBuzz".
+
+      for (var a = 1; a <= 100; a++) {
+        if (a % 3 == 0 && a % 5 == 0) {
+          console.log(` FIZZBUZZ ${a} is multiply of both 3 and 5..`);
+        } else if (a % 3 == 0) {
+          console.log(` FIZZ ${a} is multiply of 3 only..`);
+        } else if (a % 5 == 0) {
+          console.log(` BUZZ ${a} is multiply of 5 only..`);
+        }
+      }
+
+      //   **************fizzbuzz program  ended here************************
+
+      //     **6. Sum of Array Elements**
+      //  Write a function that calculates the sum of all elements in an array.
+
+      function sumOfArrayElement(arr) {
+        var sum = 0;
+        for (i = 0; i < arr.length; i++) {
+          sum += arr[i];
+        }
+        return sum;
+      }
+      arr = [2, 4, 6, 8, 10];
+      var totalSum = sumOfArrayElement(arr);
+      console.log(` The sum of element in array = ${totalSum}`);
+
+      //   **************sum of elements in array  ended here************************
+
+      // **7. Title Case a Sentence**
+      //    Create a function that converts a sentence to title case (capitalize the first letter of each word).
+      function capitalize(sentence) {
+        var words = sentence.split(" ");
+        var capitalizedWords = [];
+
+        for (let i = 0; i < words.length; i++) {
+          var word = words[i];
+          var capitalizedWord =
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          capitalizedWords.push(capitalizedWord);
+        }
+
+        return capitalizedWords.join(" "); // Join the words back into a sentence
+      }
+
+      sen = "i am happy to be glad here.";
+      var titleCase = capitalize(sen);
+      console.log(`TitleCase of the sentence = ${titleCase}`);
+
+      // ****************ending capitalizing first letter of each word****************************
+
+      //       **8. Count Vowels in a String**
+      //    Write a function that counts the number of vowels in a given string.
+
+      function countVowels(string) {
+        l = string.length;
+        var count = 0;
+        for (var i = 0; i < l; i++) {
+          if (
+            string[i] == "a" ||
+            string[i] == "A" ||
+            string[i] == "e" ||
+            string[i] == "E" ||
+            string[i] == "i" ||
+            string[i] == "I" ||
+            string[i] == "o" ||
+            string[i] == "O" ||
+            string[i] == "u" ||
+            string[i] == "U"
+          ) {
+            count = count + 1;
+          }
+        }
+        return count;
+      }
+      str = "Amnil OOo";
+      var totalvowelcount = countVowels(str);
+      console.log(` total number of vowels are ${totalvowelcount}`);
+      // ****************ending counting vowel words..****************************
+
+      //             **9. Fibonacci Sequence**
+      //    Implement a function that generates the Fibonacci sequence up to a specified number of terms.
+
+      function fibonacci(terms) {
+        var arr = [1, 1];
+        for (var i = 2; i < terms; i++) {
+          arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        console.log(` fibonacci series ${arr}`);
+      }
+      fibonacci(10);
+
+      // ****************ending fibonacci series..****************************
+
+      //   **10. Anagram Checker**
+      // Write a function that checks if two strings are anagrams of each other (contain the same letters, ignoring spaces and capitalization).
+
+      function anagram(string1, string2) {
+        l1 = string1.length;
+        l2 = string2.length;
+        var sortedString1 = string1.split("").sort().join("");
+        var sortedString2 = string2.split("").sort().join("");
+        if (l1 === l2 && sortedString1 === sortedString2) {
+          console.log(`${string1} and ${string2} are anagram...`);
+        } else {
+          console.log("words are not anagram");
+        }
+      }
+
+      var str1 = "eat silent";
+      var str2 = "ate listen";
+      anagram(str1, str2);
+
+      // ****************ending anagram..****************************
+    </script>
+  </body>
+</html>
